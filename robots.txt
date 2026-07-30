@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bautistai-agency.vercel.app/sitemap.xml

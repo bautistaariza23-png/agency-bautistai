@@ -1,0 +1,265 @@
+/* ==========================================================================
+   BA AGENCY — Design Tokens (Colors + Type)
+   --------------------------------------------------------------------------
+   Single source of truth for color and typography across the design system.
+   Token names follow the system's atomic naming: <category>-<role>-<scale>.
+   Semantic vars (h1, body, link…) compose primitive vars and should be
+   what most components reference.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------- FONTS */
+/* We rely on Google Fonts for the three families used across the agency.
+   If you self-host, drop the .woff2 files into /fonts and replace below. */
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* ===== COLOR — PRIMITIVE ============================================== */
+  /* Brand */
+  --c-brand-purple:       #5B589C;   /* Primary accent — links, focus, CTAs    */
+  --c-brand-purple-700:   #46447B;   /* Hover / pressed                        */
+  --c-brand-purple-300:   #8A87C2;   /* Soft accent on dark backgrounds        */
+  --c-brand-purple-100:   #E6E5F1;   /* Tinted surfaces, badges                */
+
+  /* Neutral scale — runs from pure black to pure white */
+  --c-black:              #000000;
+  --c-ink-900:            #1A1A1C;   /* Primary surface (dark UI)              */
+  --c-ink-800:            #25252A;   /* Elevated dark surfaces                 */
+  --c-ink-700:            #33333A;   /* Borders on dark / disabled fg          */
+  --c-ink-500:            #797982;   /* Secondary text / muted icons           */
+  --c-ink-300:            #B5B5BC;   /* Hairlines / disabled text on light     */
+  --c-ink-100:            #EFEFF1;   /* Light surface tint                     */
+  --c-ink-50:             #F7F7F9;   /* App background (light)                 */
+  --c-white:              #FFFFFF;
+
+  /* ===== COLOR — SEMANTIC =============================================== */
+  /* These are the vars components should USE. Light theme defaults. */
+  --bg-canvas:            var(--c-white);
+  --bg-surface:           var(--c-white);
+  --bg-surface-2:         var(--c-ink-50);
+  --bg-inverse:           var(--c-ink-900);
+
+  --fg-primary:           var(--c-ink-900);
+  --fg-secondary:         var(--c-ink-500);
+  --fg-tertiary:          var(--c-ink-300);
+  --fg-on-inverse:        var(--c-white);
+  --fg-on-accent:         var(--c-white);
+
+  --border-subtle:        rgba(26, 26, 28, 0.08);
+  --border-default:       rgba(26, 26, 28, 0.16);
+  --border-strong:        var(--c-ink-700);
+
+  --accent:               var(--c-brand-purple);
+  --accent-hover:         var(--c-brand-purple-700);
+  --accent-soft:          var(--c-brand-purple-100);
+
+  --focus-ring:           rgba(91, 88, 156, 0.45);
+
+  /* Status */
+  --c-success:            #2E9D63;
+  --c-warning:            #D08A1E;
+  --c-error:              #D04646;
+  --c-info:               #3577CC;
+
+  /* ===== TYPOGRAPHY — FAMILIES ========================================== */
+  --font-display:         'Teko', 'Roboto Condensed', 'Oswald', sans-serif;
+  --font-heading:         'Roboto Condensed', 'Teko', sans-serif;
+  --font-body:            'Open Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:            ui-monospace, 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+
+  /* ===== TYPOGRAPHY — SCALE ============================================= */
+  /* Derived from a 1.250 (major third) ratio, anchored at 16px body.       */
+  --t-xs:                 0.75rem;   /* 12px — captions, labels             */
+  --t-sm:                 0.875rem;  /* 14px — small body                   */
+  --t-base:               1rem;      /* 16px — body                         */
+  --t-lg:                 1.125rem;  /* 18px — lead paragraph               */
+  --t-xl:                 1.5rem;    /* 24px — h5/h6                        */
+  --t-2xl:                2rem;      /* 32px — h3/h4                        */
+  --t-3xl:                2.75rem;   /* 44px — h2                           */
+  --t-4xl:                3.75rem;   /* 60px — h1                           */
+  --t-5xl:                5.5rem;    /* 88px — hero display                 */
+  --t-6xl:                7.5rem;    /* 120px — billboard / landing hero    */
+
+  /* ===== TYPOGRAPHY — WEIGHTS / LH / TRACKING =========================== */
+  --w-light:              300;
+  --w-regular:            400;
+  --w-medium:             500;
+  --w-semi:               600;
+  --w-bold:               700;
+
+  --lh-tight:             1.02;       /* Display — Teko looks best very tight */
+  --lh-snug:              1.15;
+  --lh-normal:            1.4;
+  --lh-relaxed:           1.6;        /* Body copy                            */
+
+  --ls-tight:             -0.02em;
+  --ls-display:           -0.01em;
+  --ls-normal:            0;
+  --ls-wide:              0.04em;
+  --ls-eyebrow:           0.18em;     /* Uppercase eyebrows / kickers         */
+
+  /* ===== SPACING (4px grid) ============================================= */
+  --s-1:  4px;  --s-2:  8px;   --s-3:  12px; --s-4:  16px;
+  --s-6:  24px; --s-8:  32px;  --s-12: 48px; --s-16: 64px;
+  --s-24: 96px; --s-32: 128px;
+
+  /* ===== RADIUS ========================================================= */
+  --r-none:  0;
+  --r-sm:    4px;
+  --r-md:    8px;
+  --r-lg:    16px;
+  --r-full:  9999px;
+
+  /* ===== SHADOW / ELEVATION ============================================= */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-lg:  0 12px 32px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-xl:  0 28px 64px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-glow:0 0 0 4px var(--focus-ring);
+
+  /* ===== MOTION ========================================================= */
+  --dur-fast:    150ms;
+  --dur-normal:  250ms;
+  --dur-slow:    400ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout:  cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dark theme — flip semantic vars; primitives unchanged. */
+[data-theme="dark"], .theme-dark {
+  --bg-canvas:      var(--c-ink-900);
+  --bg-surface:     var(--c-ink-800);
+  --bg-surface-2:   var(--c-ink-700);
+  --bg-inverse:     var(--c-white);
+
+  --fg-primary:     var(--c-white);
+  --fg-secondary:   var(--c-ink-300);
+  --fg-tertiary:    var(--c-ink-500);
+  --fg-on-inverse:  var(--c-ink-900);
+
+  --border-subtle:  rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.16);
+  --border-strong:  var(--c-ink-300);
+
+  --accent:         var(--c-brand-purple-300);
+  --accent-hover:   var(--c-brand-purple);
+  --accent-soft:    rgba(91, 88, 156, 0.18);
+}
+
+/* ==========================================================================
+   SEMANTIC TYPE STYLES
+   These classes are the canonical text styles. Use them rather than rolling
+   one-off font-size/weight combos in components.
+   ========================================================================== */
+
+.t-display,
+.t-display-xl {
+  font-family: var(--font-display);
+  font-weight: var(--w-medium);
+  font-size: var(--t-6xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+}
+
+.t-display-lg {
+  font-family: var(--font-display);
+  font-weight: var(--w-medium);
+  font-size: var(--t-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+}
+
+.t-h1, h1 {
+  font-family: var(--font-heading);
+  font-weight: var(--w-bold);
+  font-size: var(--t-4xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+}
+
+.t-h2, h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--w-bold);
+  font-size: var(--t-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+}
+
+.t-h3, h3 {
+  font-family: var(--font-heading);
+  font-weight: var(--w-semi);
+  font-size: var(--t-2xl);
+  line-height: var(--lh-snug);
+}
+
+.t-h4, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--w-semi);
+  font-size: var(--t-xl);
+  line-height: var(--lh-snug);
+}
+
+.t-eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--w-semi);
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.t-lead {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--t-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-secondary);
+}
+
+.t-body, p {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--t-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-primary);
+}
+
+.t-small {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--t-sm);
+  line-height: var(--lh-normal);
+  color: var(--fg-secondary);
+}
+
+.t-caption {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--t-xs);
+  line-height: var(--lh-normal);
+  color: var(--fg-secondary);
+}
+
+.t-label {
+  font-family: var(--font-body);
+  font-weight: var(--w-semi);
+  font-size: var(--t-sm);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.t-mono, code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+a, .t-link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+a:hover, .t-link:hover { color: var(--accent-hover); }
