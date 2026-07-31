@@ -25,8 +25,8 @@
   var SCREENS = {
     root: {
       bubbles: [
-        bi('¡Hola! 👋 Soy el asistente virtual de <strong>Bautista Ariza</strong>.', "Hi! 👋 I'm <strong>Bautista Ariza's</strong> virtual assistant."),
-        bi('Puedo contarte sobre mis servicios, precios, cómo trabajo, o ayudarte a agendar una llamada. ¿Qué te gustaría ver?', 'I can tell you about my services, pricing, how I work, or help you book a call. What would you like to see?')
+        bi('¡Hola! 👋 Soy <strong>BautistAI</strong>, el asistente de Bautista.', "Hi! 👋 I'm <strong>BautistAI</strong>, Bautista's assistant."),
+        bi('¿En qué puedo ayudarte? Puedo contarte sobre mis servicios, precios, cómo trabajo, o ayudarte a agendar una llamada.', "How can I help you? I can tell you about my services, pricing, how I work, or help you book a call.")
       ],
       options: [
         { label: bi('🎨 Servicios', '🎨 Services'), to: 'servicios' },
@@ -246,7 +246,7 @@
       '<div id="ba-chat-header">' +
         '<img src="uploads/LOGOBA4.png" alt="">' +
         '<div>' +
-          '<p class="ba-chat-title">Bautista Ariza</p>' +
+          '<p class="ba-chat-title">BautistAI</p>' +
           '<p class="ba-chat-status"><i></i>' + bi('Asistente virtual', 'Virtual assistant') + '</p>' +
         '</div>' +
         '<div id="ba-chat-header-actions">' +
