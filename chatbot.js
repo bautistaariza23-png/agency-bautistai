@@ -8,6 +8,7 @@
   'use strict';
 
   var EMAIL = 'bautistaariza23@gmail.com';
+  var FORMSUBMIT_ID = 'ce6222dedb5d46e3bd96aee683e071b9';
   var WHATSAPP_URL = 'https://wa.me/5491162626302';
   var LINKEDIN_URL = 'https://www.linkedin.com/in/bautista-ariza-518144189/';
   var CALENDLY_URL = 'https://calendly.com/bautistaariza23/30min';
@@ -401,7 +402,7 @@
     var submitBtn = wrap.querySelector('#ba-chat-form-submit');
     submitBtn.disabled = true;
 
-    fetch('https://formsubmit.co/ajax/' + EMAIL, {
+    fetch('https://formsubmit.co/ajax/' + FORMSUBMIT_ID, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ _subject: 'Consulta desde el chatbot – ' + name, Nombre: name, Correo: email, Mensaje: message })

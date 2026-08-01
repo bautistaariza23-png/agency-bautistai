@@ -592,7 +592,7 @@ class Component extends DCLogic {
         const good = fb === 'good';
         const subject = good ? 'Feedback portafolio — Buena experiencia' : 'Feedback portafolio — Mala experiencia';
         this.setState({ sending: true, fbError: null, sent: false });
-        fetch('https://formsubmit.co/ajax/bautistaariza23@gmail.com', {
+        fetch('https://formsubmit.co/ajax/ce6222dedb5d46e3bd96aee683e071b9', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({ _subject: subject, Nombre: name, Correo: email, Experiencia: good ? 'Buena' : 'Mala', Comentario: comment })
