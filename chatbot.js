@@ -274,6 +274,7 @@
       '<footer id="ba-chat-footer"><p>' + bi('Respuesta en menos de 24 horas.', 'Reply within 24 hours.') + '</p></footer>' +
     '</div>' +
     '<button type="button" id="ba-chat-toggle" aria-label="Abrir chat" aria-expanded="false">' +
+      '<span id="ba-chat-badge" aria-hidden="true">1</span>' +
       '<svg class="ba-chat-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>' +
       '<svg class="ba-chat-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="M6 6l12 12"></path></svg>' +
     '</button>';
@@ -467,6 +468,7 @@
     wrap.classList.add('ba-chat-open');
     toggleBtn.setAttribute('aria-expanded', 'true');
     dismissTeaser();
+    markEngaged();
     if (!state.started) { state.started = true; goTo('root'); }
   }
   function closeChat() {
@@ -476,6 +478,12 @@
   function dismissTeaser() {
     teaser.classList.add('ba-chat-hidden');
     try { localStorage.setItem('baChatTeaserSeen', '1'); } catch (e) {}
+  }
+  // Retires the launcher's attention cues (halo + unread badge) for good once
+  // the visitor has actually opened the chat.
+  function markEngaged() {
+    wrap.classList.add('ba-chat-engaged');
+    try { localStorage.setItem('baChatEngaged', '1'); } catch (e) {}
   }
 
   toggleBtn.addEventListener('click', function () {
@@ -492,6 +500,10 @@
     dismissTeaser();
   });
   teaser.addEventListener('click', openChat);
+
+  var engaged = false;
+  try { engaged = localStorage.getItem('baChatEngaged') === '1'; } catch (e) {}
+  if (engaged) wrap.classList.add('ba-chat-engaged');
 
   var seen = false;
   try { seen = localStorage.getItem('baChatTeaserSeen') === '1'; } catch (e) {}
