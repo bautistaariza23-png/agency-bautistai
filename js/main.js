@@ -23,7 +23,9 @@
 const CONFIG = {
   email: 'bautistaariza23@gmail.com',
   whatsapp: '5491162626302',
-  formEndpoint: 'https://formsubmit.co/ajax/bautistaariza23@gmail.com',
+  // Hash privado de FormSubmit: evita exponer el correo en la URL del fetch,
+  // que FormSubmit marca como riesgo de spam. Mismo ID que usa el chatbot.
+  formEndpoint: 'https://formsubmit.co/ajax/ce6222dedb5d46e3bd96aee683e071b9',
   rotatorDelay: 2600,
   countDuration: 900,
 };
