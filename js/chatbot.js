@@ -129,7 +129,7 @@
     sobre: {
       bubbles: [
         bi(
-          'Soy Bautista, diseñador UX/UI y desarrollador web, especialista en flujos con IA. Trabajo con pymes y profesionales que pierden clientes por una web confusa, lenta o desactualizada — no hago sitios bonitos, hago sitios que funcionan.',
+          'Soy Bautista, diseñador UX/UI y desarrollador web, especialista en flujos con IA. Trabajo con pymes y profesionales que pierden clientes por una web confusa, lenta o desactualizada — no hago solo sitios bonitos, hago sitios que funcionan.',
           "I'm Bautista, a UX/UI designer and web developer specialized in AI workflows. I work with SMBs and professionals losing clients to a confusing, slow or outdated site — I don't make pretty sites, I make sites that work."
         ),
         bi('Con base en Buenos Aires, Argentina 🇦🇷', 'Based in Buenos Aires, Argentina 🇦🇷')
