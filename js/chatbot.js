@@ -86,13 +86,13 @@
             '<li><span class="ba-msg-strong">Nuevo proyecto</span> — desde $600 USD. Diseño + desarrollo de punta a punta, 6 revisiones + CMS.</li>' +
             '<li><span class="ba-msg-strong">Tienda online</span> — desde $500 USD. Shopify o Tienda Nube, lista para vender.</li>' +
             '<li><span class="ba-msg-strong">Desarrollo a medida</span> — desde $400 USD. Si ya tenés el diseño en Figma, 4 revisiones + CMS.</li>' +
-            '<li><span class="ba-msg-strong">Automatización</span> — desde $350 USD. Flujos de automatización con Make.</li>' +
+            '<li><span class="ba-msg-strong">Automatización</span> — desde $350 USD. Flujos de automatización con IA.</li>' +
           '</ul>',
           '<ul>' +
             '<li><span class="ba-msg-strong">New project</span> — from $600 USD. End-to-end design + build, 6 revisions + CMS.</li>' +
             '<li><span class="ba-msg-strong">Online store</span> — from $500 USD. Shopify or Tienda Nube, ready to sell.</li>' +
             '<li><span class="ba-msg-strong">Custom development</span> — from $400 USD. If you already have the Figma design, 4 revisions + CMS.</li>' +
-            '<li><span class="ba-msg-strong">Automation</span> — from $350 USD. Automation workflows with Make.</li>' +
+            '<li><span class="ba-msg-strong">Automation</span> — from $350 USD. AI automation workflows.</li>' +
           '</ul>'
         ),
         bi('Los precios son un punto de partida: la propuesta final depende del alcance del proyecto.', 'Prices are a starting point — the final quote depends on project scope.')

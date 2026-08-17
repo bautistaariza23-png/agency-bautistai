@@ -729,6 +729,16 @@ a:hover {
   line-height: 1.1;
 }
 
+/* "USD" junto al monto: mismo peso que "Empezando desde", no compite con el número */
+.price-currency {
+  margin-left: var(--s-1);
+  font-family: var(--font-body);
+  font-size: var(--t-sm);
+  font-weight: var(--w-semi);
+  letter-spacing: 0.04em;
+  color: var(--c-ink-500);
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
