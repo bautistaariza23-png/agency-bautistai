@@ -72,8 +72,8 @@
     },
     'svc-auto': {
       bubbles: [bi(
-        '<span class="ba-msg-strong">Automatización con IA</span><br>Flujos con Make y N8N que agilizan y resuelven rápidamente los objetivos de tus usuarios en tu negocio.',
-        "<span class=\"ba-msg-strong\">AI automation</span><br>Make and N8N workflows that streamline your business and solve your users' goals fast."
+        '<span class="ba-msg-strong">Automatización con IA</span><br>Flujos creados con IA que agilizan y resuelven rápidamente los objetivos de tus usuarios en tu negocio.',
+        "<span class=\"ba-msg-strong\">AI automation</span><br>AI-built workflows that streamline your business and solve your users' goals fast."
       )],
       options: 'svcFollow'
     },
