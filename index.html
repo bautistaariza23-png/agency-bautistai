@@ -24,7 +24,20 @@
 <link rel="icon" href="assets/img/logo.png" type="image/png">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/logo3d.css">
 <link rel="stylesheet" href="css/chatbot.css">
+
+<!-- Three.js se sirve desde este mismo dominio (/vendor/three), nunca desde
+     un CDN, para que ningún tercero vea la IP de quien visita el sitio.
+     El importmap solo declara rutas: no descarga nada por sí mismo. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "/vendor/three/three.module.js",
+    "three/addons/": "/vendor/three/addons/"
+  }
+}
+</script>
 
 <script type="application/ld+json">
 {
@@ -41,6 +54,7 @@
 </script>
 
 <script src="js/main.js" defer></script>
+<script src="js/logo3d-loader.js" defer></script>
 <script src="js/chatbot.js" defer></script>
 </head>
 
@@ -96,7 +110,13 @@
   <!-- ==================================================================== -->
   <!-- Hero                                                                 -->
   <!-- ==================================================================== -->
-  <header class="hero" id="top">
+  <header class="hero hero-has-logo3d" id="top">
+    <!-- El logo plano ocupa el espacio desde el primer paint. Si el módulo 3D
+         llega a cargar, se funde encima; si no, este PNG se queda. -->
+    <div class="logo3d" id="hero-logo3d" aria-hidden="true">
+      <img class="logo3d-flat" src="assets/img/logo.png" alt="" width="190" height="120">
+    </div>
+
     <div class="hero-inner">
       <p class="pill">
         <span class="pill-dot" aria-hidden="true"></span>

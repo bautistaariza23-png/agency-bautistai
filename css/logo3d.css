@@ -1,0 +1,82 @@
+/* ==========================================================================
+   BA AGENCY — Insignia 3D del hero
+   --------------------------------------------------------------------------
+   Mejora progresiva: el espacio lo ocupa siempre el logo plano (PNG), que ya
+   viene cacheado porque lo usa la barra de navegación. Si el módulo 3D llega
+   a cargar, se funde encima. Si no llega —conexión lenta, ahorro de datos,
+   sin WebGL— el PNG se queda y el hero se ve correcto igual.
+
+   El alto está reservado desde el primer paint, así que no hay salto de
+   layout (CLS) cuando aparece el canvas.
+   ========================================================================== */
+
+.logo3d {
+  position: relative;
+  width: 100%;
+  max-width: 190px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+/* Resplandor del material neón, resuelto en CSS.
+   Con postproceso de Three.js se perdía el fondo transparente del canvas
+   y costaba 11 KB extra de librería para el mismo efecto. */
+.logo3d::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(138, 135, 194, 0.32),
+    transparent 62%
+  );
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+/* --- Logo plano (estado inicial y respaldo) ------------------------------ */
+.logo3d-flat {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+/* --- Canvas 3D ----------------------------------------------------------- */
+.logo3d canvas {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+.logo3d.is-ready canvas {
+  opacity: 1;
+}
+
+.logo3d.is-ready .logo3d-flat {
+  opacity: 0;
+}
+
+/* --- Compensación del hero -----------------------------------------------
+   La insignia suma alto al hero. Sin recortar el padding superior, el CTA
+   principal caía por debajo del pliegue en pantallas de 900px. */
+.hero-has-logo3d {
+  padding-top: 150px;
+}
+
+@media (max-width: 640px) {
+  .logo3d {
+    max-width: 150px;
+    height: 100px;
+  }
+
+  .hero-has-logo3d {
+    padding-top: 110px;
+  }
+}
