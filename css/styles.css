@@ -914,8 +914,15 @@ a:hover {
   transition: transform var(--dur-normal) var(--ease-out);
 }
 
-.faq-item[open] .faq-question::after {
-  content: '−';
+/* El "+" rota a "×" en vez de cambiar de glifo — así el ícono siempre
+   puede animarse con una transición de transform.
+   - .is-open la controla js/faq.js, sincronizada con el clic (no con el
+     final de la animación de alto, que tarda 400ms más).
+   - [open] es el respaldo sin JS (o con prefers-reduced-motion, que ya
+     aplasta esta transición a 0 más abajo en el archivo). */
+.faq-item[open] .faq-question::after,
+.faq-item.is-open .faq-question::after {
+  transform: rotate(45deg);
 }
 
 .faq-question:hover::after {
