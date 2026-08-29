@@ -901,17 +901,17 @@ a:hover {
 /* Insignia morada — mismo lenguaje que .badge-day (proceso) y los botones
    primarios: borde y relleno tenue en reposo, morado sólido + ícono blanco
    al interactuar. Así se lee como morada desde el primer vistazo, no solo
-   al pasar el mouse. */
-.faq-question::after {
-  content: '+';
+   al pasar el mouse.
+   Es un elemento real (span + svg), no un ::after generado por CSS: así el
+   ícono de Hugeicons (add-01, stroke rounded) queda inline igual que el
+   resto de los íconos del sitio, sin depender de una fuente de íconos. */
+.faq-icon {
   flex-shrink: 0;
   width: 28px;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: var(--w-regular);
   color: var(--c-brand-purple-300);
   background: rgba(138, 135, 194, 0.12);
   border: 1px solid rgba(138, 135, 194, 0.4);
@@ -923,21 +923,26 @@ a:hover {
     border-color var(--dur-fast) var(--ease-out);
 }
 
-/* El "+" rota a "×" en vez de cambiar de glifo — así el ícono siempre
-   puede animarse con una transición de transform.
+.faq-icon svg {
+  display: block;
+  stroke: currentColor;
+}
+
+/* El "+" rota a "×" en vez de cambiar de ícono — dos trazos perpendiculares
+   girados 45° forman una cruz de cierre, sin necesitar un segundo glifo.
    - .is-open la controla js/faq.js, sincronizada con el clic (no con el
      final de la animación de alto, que tarda 400ms más).
    - [open] es el respaldo sin JS (o con prefers-reduced-motion, que ya
      aplasta esta transición a 0 más abajo en el archivo). */
-.faq-item[open] .faq-question::after,
-.faq-item.is-open .faq-question::after {
+.faq-item[open] .faq-question .faq-icon,
+.faq-item.is-open .faq-question .faq-icon {
   transform: rotate(45deg);
   background: var(--c-brand-purple-300);
   border-color: var(--c-brand-purple-300);
   color: var(--c-white);
 }
 
-.faq-question:hover::after {
+.faq-question:hover .faq-icon {
   background: var(--c-brand-purple-300);
   border-color: var(--c-brand-purple-300);
   color: var(--c-white);
