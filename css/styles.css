@@ -898,6 +898,10 @@ a:hover {
   display: none;
 }
 
+/* Insignia morada — mismo lenguaje que .badge-day (proceso) y los botones
+   primarios: borde y relleno tenue en reposo, morado sólido + ícono blanco
+   al interactuar. Así se lee como morada desde el primer vistazo, no solo
+   al pasar el mouse. */
 .faq-question::after {
   content: '+';
   flex-shrink: 0;
@@ -909,9 +913,14 @@ a:hover {
   font-size: 20px;
   font-weight: var(--w-regular);
   color: var(--c-brand-purple-300);
-  border: 1px solid var(--border-default);
+  background: rgba(138, 135, 194, 0.12);
+  border: 1px solid rgba(138, 135, 194, 0.4);
   border-radius: 50%;
-  transition: transform var(--dur-normal) var(--ease-out);
+  transition:
+    transform var(--dur-normal) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
 }
 
 /* El "+" rota a "×" en vez de cambiar de glifo — así el ícono siempre
@@ -923,10 +932,15 @@ a:hover {
 .faq-item[open] .faq-question::after,
 .faq-item.is-open .faq-question::after {
   transform: rotate(45deg);
+  background: var(--c-brand-purple-300);
+  border-color: var(--c-brand-purple-300);
+  color: var(--c-white);
 }
 
 .faq-question:hover::after {
+  background: var(--c-brand-purple-300);
   border-color: var(--c-brand-purple-300);
+  color: var(--c-white);
 }
 
 .faq-answer {
