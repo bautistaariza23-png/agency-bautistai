@@ -58,7 +58,7 @@
     },
     'svc-corp': {
       bubbles: [bi(
-        '<span class="ba-msg-strong">Sitios web corporativos</span><br>Tu presencia digital completa. Diseño en Figma, desarrollo en Framer o a medida con código (HTML, CSS, JS, Tailwind CSS) según lo que tu proyecto necesite.',
+        '<span class="ba-msg-strong">Sitios web corporativos</span><br>Tu presencia digital completa. Diseño en Figma, desarrollo en Framer o programado a mano (HTML, CSS, JS, Tailwind CSS) según lo que tu proyecto necesite.',
         '<span class="ba-msg-strong">Corporate websites</span><br>Your complete digital presence. Designed in Figma, built in Framer or hand-coded (HTML, CSS, JS, Tailwind CSS) — whichever your project needs.'
       )],
       options: 'svcFollow'
@@ -110,12 +110,12 @@
         bi(
           '<ul>' +
             '<li><span class="ba-msg-strong">Día 1–3 · Entiendo tu negocio</span> — una llamada de 45 minutos para entender a tus clientes y objetivos.</li>' +
-            '<li><span class="ba-msg-strong">Día 4–11 · Construyo la solución</span> — diseño en Figma y desarrollo en Framer o código a medida. Ves el avance en tiempo real.</li>' +
+            '<li><span class="ba-msg-strong">Día 4–11 · Construyo la solución</span> — diseño en Figma y desarrollo en Framer o programado a mano. Ves el avance en tiempo real.</li>' +
             '<li><span class="ba-msg-strong">Día 11–14 · Tu sitio sale al mundo</span> — revisamos juntos, ajustamos detalles y publicamos.</li>' +
           '</ul>',
           '<ul>' +
             '<li><span class="ba-msg-strong">Day 1–3 · I learn your business</span> — a 45-minute call to understand your clients and goals.</li>' +
-            '<li><span class="ba-msg-strong">Day 4–11 · I build the solution</span> — Figma design and development in Framer or custom code. You see progress in real time.</li>' +
+            '<li><span class="ba-msg-strong">Day 4–11 · I build the solution</span> — Figma design and development in Framer or hand-coded. You see progress in real time.</li>' +
             '<li><span class="ba-msg-strong">Day 11–14 · Your site goes live</span> — we review together, fine-tune details and publish.</li>' +
           '</ul>'
         )
