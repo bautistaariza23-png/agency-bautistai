@@ -12,6 +12,7 @@
      7. Contador animado de precios
      8. Píldoras de objetivo (WhatsApp / email)
      9. Formulario de feedback
+    10. Enlaces de contacto (WhatsApp y respaldo del correo)
    ========================================================================== */
 
 'use strict';
@@ -43,6 +44,7 @@ const TEXT = {
     invalidEmail: 'Ingresá un correo electrónico válido.',
     sendFailed: 'No se pudo enviar. Intentá de nuevo en unos minutos.',
     mailSubject: 'Quiero empezar mi proyecto',
+    closeLabel: 'Cerrar',
   },
   en: {
     namePlaceholder: 'Your name',
@@ -51,6 +53,7 @@ const TEXT = {
     invalidEmail: 'Please enter a valid email address.',
     sendFailed: 'Could not send. Please try again in a few minutes.',
     mailSubject: 'I want to start my project',
+    closeLabel: 'Close',
   },
 };
 
@@ -409,6 +412,91 @@ function initFeedback() {
 }
 
 /* ==========================================================================
+   10. ENLACES DE CONTACTO
+   ==========================================================================
+   - WhatsApp: el mensaje prellenado de cada tarjeta cambia con el idioma.
+   - Correo: un enlace mailto: solo hace algo si el equipo tiene un programa
+     de correo configurado, y en escritorio muchas veces no lo tiene. No hay
+     forma directa de saber si se abrió, así que se detecta por descarte: si
+     tras el clic la ventana no pierde el foco (señal de que otra app se
+     abrió), se muestra un aviso con alternativas.
+   ========================================================================== */
+
+function initContactLinks() {
+  const notice = document.getElementById('mail-fallback');
+  const closeButton = document.getElementById('mail-close');
+  const copyButton = document.getElementById('mail-copy');
+  const gmailLink = document.getElementById('mail-gmail');
+  const waLinks = document.querySelectorAll('[data-wa-es]');
+
+  onLanguageChange((lang) => {
+    waLinks.forEach((link) => {
+      const message = link.dataset[lang === 'es' ? 'waEs' : 'waEn'];
+      link.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(message)}`;
+    });
+    if (closeButton) closeButton.setAttribute('aria-label', t().closeLabel);
+  });
+
+  if (!notice || !closeButton || !copyButton || !gmailLink) return;
+
+  const DETECT_DELAY = 1200; // ms que se espera a que otra app tome el foco
+  const AUTO_HIDE = 15000;
+  let detectTimer;
+  let hideTimer;
+
+  const hide = () => {
+    clearTimeout(hideTimer);
+    notice.hidden = true;
+  };
+
+  const show = (mailto) => {
+    // Gmail en la web recibe los mismos datos que el mailto: original.
+    const url = new URL(mailto);
+    const params = new URLSearchParams({ view: 'cm', fs: '1', to: CONFIG.email });
+    if (url.searchParams.get('subject')) params.set('su', url.searchParams.get('subject'));
+    if (url.searchParams.get('body')) params.set('body', url.searchParams.get('body'));
+    gmailLink.href = `https://mail.google.com/mail/?${params}`;
+
+    notice.classList.remove('is-copied');
+    notice.hidden = false;
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hide, AUTO_HIDE);
+  };
+
+  // Si otra app (o el diálogo del navegador) toma el foco, el correo sí abrió.
+  const cancelDetection = () => clearTimeout(detectTimer);
+  window.addEventListener('blur', cancelDetection);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelDetection();
+  });
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="mailto:"]');
+    if (!link || notice.contains(link)) return;
+
+    cancelDetection();
+    detectTimer = setTimeout(() => show(link.href), DETECT_DELAY);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !notice.hidden) hide();
+  });
+
+  closeButton.addEventListener('click', hide);
+
+  copyButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(CONFIG.email);
+      notice.classList.add('is-copied');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(hide, 4000);
+    } catch {
+      // Sin permiso de portapapeles: la dirección queda visible en el aviso.
+    }
+  });
+}
+
+/* ==========================================================================
    INICIALIZACIÓN
    ========================================================================== */
 
@@ -420,3 +508,4 @@ initReveal();
 initCounters();
 initGoalPills();
 initFeedback();
+initContactLinks();
