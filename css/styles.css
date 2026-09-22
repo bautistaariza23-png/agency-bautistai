@@ -1091,11 +1091,46 @@ html[data-lang='en'] .nav-lang-option[data-lang-value='en'] {
 }
 
 .faq-answer {
+  display: block;
   margin: 0;
   padding: 0 var(--s-6) var(--s-6);
   color: var(--c-ink-300);
   font-size: var(--t-base);
   line-height: var(--lh-relaxed);
+}
+
+/* Aviso puntual dentro de una respuesta — se distingue del resto del texto
+   sin gritar: acento ámbar (--c-warning, ya reservado para esta semántica)
+   en el borde y el ícono, tipografía más chica que el cuerpo de la
+   respuesta. Va dentro de .faq-answer para que faq.js siga midiendo la
+   altura real de la respuesta al animar el acordeón (ver runHeightAnimation
+   en js/faq.js, que mide offsetHeight de .faq-answer completo). */
+.faq-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  margin-top: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border-left: 2px solid var(--c-warning);
+  background: rgba(208, 138, 30, 0.1);
+}
+
+.faq-notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--c-warning);
+}
+
+.faq-notice p {
+  margin: 0;
+  font-size: var(--t-sm);
+  line-height: var(--lh-relaxed);
+}
+
+.faq-notice strong {
+  color: var(--c-white);
+  font-weight: var(--w-semi);
 }
 
 /* --- Documento legal (política de privacidad) --------------------------- */
