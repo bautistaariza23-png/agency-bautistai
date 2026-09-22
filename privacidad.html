@@ -37,8 +37,17 @@
         <a href="/#sobre-mi"><span class="lang-es">Sobre mí</span><span class="lang-en">About</span></a>
       </div>
 
-      <button type="button" class="nav-lang" id="lang-toggle">
-        <span class="lang-es">ES → EN</span><span class="lang-en">EN → ES</span>
+      <button type="button" class="nav-lang" id="lang-toggle" title="ES / EN" aria-label="Cambiar idioma del sitio / Switch site language">
+        <svg class="nav-lang-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18"></path>
+          <path d="M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9s1.3-6.5 3.8-9Z"></path>
+        </svg>
+        <span class="nav-lang-track" aria-hidden="true">
+          <span class="nav-lang-thumb"></span>
+          <span class="nav-lang-option" data-lang-value="es">ES</span>
+          <span class="nav-lang-option" data-lang-value="en">EN</span>
+        </span>
       </button>
 
       <a href="/#precios" class="btn btn-primary btn-sm nav-cta">

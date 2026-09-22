@@ -542,26 +542,68 @@ a:hover {
   color: var(--c-white);
 }
 
+/* Switch de idioma: el ícono de globo comunica "idioma" de un vistazo, y el
+   riel ES/EN con una perilla deslizante deja ver cuál está activo, en vez de
+   depender de leer texto tipo "ES → EN" para entender qué hace el botón. */
 .nav-lang {
   background: transparent;
   border: 1px solid var(--border-default);
   border-radius: var(--r-full);
-  color: var(--c-white);
-  font-size: var(--t-xs);
-  font-weight: var(--w-semi);
-  letter-spacing: 0.08em;
-  padding: 6px 14px;
+  color: var(--c-ink-500);
+  padding: 5px 8px 5px 10px;
   display: inline-flex;
-  gap: 6px;
+  gap: 7px;
   align-items: center;
-  transition:
-    border-color var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
+  transition: border-color var(--dur-fast) var(--ease-out);
 }
 
 .nav-lang:hover {
   border-color: var(--c-brand-purple-300);
+}
+
+.nav-lang-icon {
+  flex-shrink: 0;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav-lang:hover .nav-lang-icon {
   color: var(--c-brand-purple-300);
+}
+
+.nav-lang-track {
+  position: relative;
+  display: flex;
+}
+
+.nav-lang-thumb {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 26px;
+  background: var(--c-brand-purple-300);
+  border-radius: var(--r-full);
+  transition: transform var(--dur-normal) var(--ease-out);
+}
+
+html[data-lang='en'] .nav-lang-thumb {
+  transform: translateX(26px);
+}
+
+.nav-lang-option {
+  position: relative;
+  z-index: 1;
+  width: 26px;
+  padding: 4px 0;
+  text-align: center;
+  font-size: var(--t-xs);
+  font-weight: var(--w-semi);
+  letter-spacing: 0.04em;
+  color: inherit;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+html[data-lang='es'] .nav-lang-option[data-lang-value='es'],
+html[data-lang='en'] .nav-lang-option[data-lang-value='en'] {
+  color: var(--c-white);
 }
 
 .nav-burger {
