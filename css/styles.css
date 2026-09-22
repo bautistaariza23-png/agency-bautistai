@@ -1202,13 +1202,6 @@ html[data-lang='en'] .nav-lang-option[data-lang-value='en'] {
   text-underline-offset: 2px;
 }
 
-.legal-note {
-  border-left: 2px solid var(--border-default);
-  padding-left: var(--s-4);
-  font-size: var(--t-sm);
-  color: var(--c-ink-500);
-}
-
 /* --- Contacto ----------------------------------------------------------- */
 .contact {
   padding: var(--s-32) var(--s-6);
