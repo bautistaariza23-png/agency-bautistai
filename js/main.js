@@ -32,8 +32,8 @@ const CONFIG = {
 };
 
 const WORDS = {
-  es: ['landing pages', 'sitios web', 'e-commerce', 'flujos con IA'],
-  en: ['landing pages', 'websites', 'e-commerce', 'AI workflows'],
+  es: ['landing pages', 'sitios web', 'e-commerce', 'flujos de automatización con IA'],
+  en: ['landing pages', 'websites', 'e-commerce', 'AI automation workflows'],
 };
 
 const TEXT = {
