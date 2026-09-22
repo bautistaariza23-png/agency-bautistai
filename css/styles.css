@@ -1300,13 +1300,6 @@ html[data-lang='en'] .nav-lang-option[data-lang-value='en'] {
   object-fit: contain;
 }
 
-.footer-tagline {
-  margin: 0;
-  font-size: var(--t-sm);
-  color: var(--c-ink-500);
-  line-height: var(--lh-relaxed);
-}
-
 .footer-nav {
   display: flex;
   gap: var(--s-16);
