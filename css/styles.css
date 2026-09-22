@@ -512,14 +512,6 @@ a:hover {
   object-fit: contain;
 }
 
-.nav-brand-name {
-  font-family: var(--font-heading);
-  font-weight: var(--w-bold);
-  font-size: 18px;
-  color: var(--c-white);
-  letter-spacing: 0.02em;
-}
-
 .nav-right {
   display: flex;
   align-items: center;
@@ -1271,13 +1263,6 @@ html[data-lang='en'] .nav-lang-option[data-lang-value='en'] {
   width: 28px;
   height: 31px;
   object-fit: contain;
-}
-
-.footer-brand-name {
-  font-family: var(--font-heading);
-  font-weight: var(--w-bold);
-  font-size: var(--t-base);
-  color: var(--c-white);
 }
 
 .footer-tagline {
