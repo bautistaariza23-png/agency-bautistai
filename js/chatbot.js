@@ -58,8 +58,8 @@
     },
     'svc-corp': {
       bubbles: [bi(
-        '<span class="ba-msg-strong">Sitios web corporativos</span><br>Tu presencia digital completa. Diseño en Figma, desarrollo en Framer o con código propio (HTML, CSS, JS, Tailwind CSS) según lo que tu proyecto necesite.',
-        '<span class="ba-msg-strong">Corporate websites</span><br>Your complete digital presence. Designed in Figma, built in Framer or with my own code (HTML, CSS, JS, Tailwind CSS) — whichever your project needs.'
+        '<span class="ba-msg-strong">Sitios web corporativos</span><br>Tu presencia digital completa. Diseño en Figma, desarrollo en Framer o en código (HTML, CSS, JS, Tailwind CSS) según lo que tu proyecto necesite.',
+        '<span class="ba-msg-strong">Corporate websites</span><br>Your complete digital presence. Designed in Figma, built in Framer or in code (HTML, CSS, JS, Tailwind CSS) — whichever your project needs.'
       )],
       options: 'svcFollow'
     },
@@ -87,12 +87,14 @@
             '<li><span class="ba-msg-strong">Tienda online</span> — desde $500 USD. Shopify o Tienda Nube, lista para vender.</li>' +
             '<li><span class="ba-msg-strong">Desarrollo a medida</span> — desde $400 USD. Si ya tenés el diseño en Figma, 4 revisiones + CMS.</li>' +
             '<li><span class="ba-msg-strong">Automatización</span> — desde $350 USD. Flujos de automatización con IA.</li>' +
+            '<li><span class="ba-msg-strong">Landing page</span> — desde $250 USD. Figma + Framer o desarrollo en código, 4 revisiones.</li>' +
           '</ul>',
           '<ul>' +
             '<li><span class="ba-msg-strong">New project</span> — from $600 USD. End-to-end design + build, 6 revisions + CMS + SEO.</li>' +
             '<li><span class="ba-msg-strong">Online store</span> — from $500 USD. Shopify or Tienda Nube, ready to sell.</li>' +
             '<li><span class="ba-msg-strong">Custom development</span> — from $400 USD. If you already have the Figma design, 4 revisions + CMS.</li>' +
             '<li><span class="ba-msg-strong">Automation</span> — from $350 USD. AI automation workflows.</li>' +
+            '<li><span class="ba-msg-strong">Landing page</span> — from $250 USD. Figma + Framer or code development, 4 revisions.</li>' +
           '</ul>'
         ),
         bi('Los precios son un punto de partida: la propuesta final depende del alcance del proyecto.', 'Prices are a starting point — the final quote depends on project scope.')
@@ -110,12 +112,12 @@
         bi(
           '<ul>' +
             '<li><span class="ba-msg-strong">Día 1–3 · Entiendo tu negocio</span> — una llamada de 45 minutos para entender a tus clientes y objetivos.</li>' +
-            '<li><span class="ba-msg-strong">Día 4–11 · Construyo la solución</span> — diseño en Figma y desarrollo en Framer o con código propio. Ves el avance en tiempo real.</li>' +
+            '<li><span class="ba-msg-strong">Día 4–11 · Construyo la solución</span> — diseño en Figma y desarrollo en Framer o en código. Ves el avance en tiempo real.</li>' +
             '<li><span class="ba-msg-strong">Día 11–14 · Tu sitio sale al mundo</span> — revisamos juntos, ajustamos detalles y publicamos.</li>' +
           '</ul>',
           '<ul>' +
             '<li><span class="ba-msg-strong">Day 1–3 · I learn your business</span> — a 45-minute call to understand your clients and goals.</li>' +
-            '<li><span class="ba-msg-strong">Day 4–11 · I build the solution</span> — Figma design and development in Framer or with my own code. You see progress in real time.</li>' +
+            '<li><span class="ba-msg-strong">Day 4–11 · I build the solution</span> — Figma design and development in Framer or in code. You see progress in real time.</li>' +
             '<li><span class="ba-msg-strong">Day 11–14 · Your site goes live</span> — we review together, fine-tune details and publish.</li>' +
           '</ul>'
         )
