@@ -1513,6 +1513,17 @@ html[data-lang='en'] .nav-lang-option[data-lang-value='en'] {
     grid-template-columns: 1fr;
   }
 
+  /* En mobile los botones de experiencia se apilan: la opción positiva
+     arriba y "No tuve una buena experiencia" debajo. */
+  .fb-choices {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .fb-choices .btn {
+    justify-content: center;
+  }
+
   .section,
   .contact {
     padding: var(--s-16) var(--s-5);
