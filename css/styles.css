@@ -206,6 +206,18 @@ a:hover {
   transform: translateY(0) scale(0.98);
 }
 
+/* Ícono de flecha dentro de un botón (Hugeicons arrow-right-02, stroke
+   rounded — mismo paquete que el "+" del FAQ). Avanza un poco al pasar
+   el mouse para reforzar la idea de "seguir". */
+.btn-icon {
+  flex-shrink: 0;
+  transition: transform var(--dur-normal) var(--ease-out);
+}
+
+.btn:hover .btn-icon {
+  transform: translateX(3px);
+}
+
 .btn-primary {
   background: var(--c-brand-purple-300);
   color: var(--c-white);
