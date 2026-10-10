@@ -379,6 +379,7 @@ function initFeedback() {
           experience === 'good'
             ? 'Feedback portafolio — Buena experiencia'
             : 'Feedback portafolio — Mala experiencia',
+        _honey: document.getElementById('fb-hp')?.value || '',
         Nombre: nameValue,
         Correo: emailValue,
         Experiencia: experience === 'good' ? 'Buena' : 'Mala',

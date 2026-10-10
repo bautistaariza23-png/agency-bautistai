@@ -88,6 +88,17 @@ a:hover {
   border: 0;
 }
 
+/* Campo trampa anti-spam (honeypot): invisible para personas y lectores de
+   pantalla; los bots que completan todos los campos lo llenan y FormSubmit
+   descarta el envío. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* Grillas responsivas */
 .grid {
   display: grid;

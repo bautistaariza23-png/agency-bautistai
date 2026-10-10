@@ -29,7 +29,10 @@
 
 <!-- Three.js se sirve desde este mismo dominio (/vendor/three), nunca desde
      un CDN, para que ningún tercero vea la IP de quien visita el sitio.
-     El importmap solo declara rutas: no descarga nada por sí mismo. -->
+     El importmap solo declara rutas: no descarga nada por sí mismo.
+     IMPORTANTE: la Content-Security-Policy de vercel.json autoriza este
+     bloque por su hash sha256. Si cambiás aunque sea un espacio acá adentro,
+     recalculá el hash y actualizalo en vercel.json o el logo 3D dejará de cargar. -->
 <script type="importmap">
 {
   "imports": {
@@ -639,6 +642,9 @@
       </div>
 
       <form class="feedback-form" id="feedback-form" hidden novalidate>
+        <div class="hp-field" aria-hidden="true">
+          <input id="fb-hp" name="_honey" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="fb-fields">
           <div class="field">
             <label class="label" for="fb-name"><span class="lang-es">Nombre</span><span class="lang-en">Name</span></label>

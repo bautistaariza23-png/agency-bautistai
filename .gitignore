@@ -1,0 +1,14 @@
+# Secretos y credenciales: NUNCA se suben al repo ni se publican.
+# Los valores reales van en Vercel > Project > Settings > Environment Variables.
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# Archivos locales
+.vercel
+node_modules/
+.DS_Store
+Thumbs.db

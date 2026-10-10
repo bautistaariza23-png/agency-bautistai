@@ -264,6 +264,7 @@
       '<div id="ba-chat-messages"></div>' +
       '<div id="ba-chat-options"></div>' +
       '<form id="ba-chat-form" novalidate>' +
+        '<div class="hp-field" aria-hidden="true"><input id="ba-chat-hp" type="text" tabindex="-1" autocomplete="off"></div>' +
         '<div class="ba-chat-field"><label for="ba-chat-name">' + bi('Nombre', 'Name') + '</label><input id="ba-chat-name" type="text" autocomplete="name" required></div>' +
         '<div class="ba-chat-field"><label for="ba-chat-email">Email</label><input id="ba-chat-email" type="email" autocomplete="email" required></div>' +
         '<div class="ba-chat-field"><label for="ba-chat-message">' + bi('Mensaje', 'Message') + '</label><textarea id="ba-chat-message" rows="3" required></textarea></div>' +
@@ -408,7 +409,7 @@
     fetch('https://formsubmit.co/ajax/' + FORMSUBMIT_ID, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ _subject: 'Consulta desde el chatbot – ' + name, Nombre: name, Correo: email, Mensaje: message })
+      body: JSON.stringify({ _subject: 'Consulta desde el chatbot – ' + name, _honey: wrap.querySelector('#ba-chat-hp').value, Nombre: name, Correo: email, Mensaje: message })
     }).then(function (r) { return r.json(); }).then(function (res) {
       submitBtn.disabled = false;
       if (res && (res.success === 'true' || res.success === true)) {
