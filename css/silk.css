@@ -19,6 +19,8 @@
   display: block;
   width: 100%;
   height: 100%;
+  /* Tela atenuada para que el contenido del hero gane protagonismo */
+  opacity: 0.6;
 }
 
 /* Velo oscuro para que el titular blanco siempre tenga contraste
