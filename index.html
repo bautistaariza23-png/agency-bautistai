@@ -24,6 +24,7 @@
 <link rel="icon" href="assets/img/logo.png" type="image/png">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/silk.css">
 <link rel="stylesheet" href="css/logo3d.css">
 <link rel="stylesheet" href="css/chatbot.css">
 
@@ -57,6 +58,7 @@
 </script>
 
 <script src="js/main.js" defer></script>
+<script src="js/silk.js" defer></script>
 <script src="js/logo3d-loader.js" defer></script>
 <script src="js/faq.js" defer></script>
 <script src="js/chatbot.js" defer></script>
@@ -125,6 +127,11 @@
   <!-- Hero                                                                 -->
   <!-- ==================================================================== -->
   <header class="hero hero-has-logo3d" id="top">
+    <!-- Fondo animado de tela (WebGL2). Si no hay soporte, queda vacío. -->
+    <div class="silk-container" data-silk aria-hidden="true">
+      <canvas class="silk-canvas"></canvas>
+    </div>
+
     <!-- El logo plano ocupa el espacio desde el primer paint. Si el módulo 3D
          llega a cargar, se funde encima; si no, este PNG se queda. -->
     <div class="logo3d" id="hero-logo3d" aria-hidden="true">
