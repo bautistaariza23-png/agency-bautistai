@@ -1314,25 +1314,6 @@ html[data-lang='en'] .nav-lang-option[data-lang-value='en'] {
   margin-bottom: var(--s-12);
 }
 
-.footer-about {
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-4);
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: var(--s-3);
-}
-
-.footer-brand img {
-  width: 44px;
-  height: 49px;
-  object-fit: contain;
-}
-
 .footer-nav {
   display: flex;
   gap: var(--s-16);
