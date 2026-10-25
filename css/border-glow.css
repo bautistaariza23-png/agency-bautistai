@@ -1,0 +1,197 @@
+/* ==========================================================================
+   BA AGENCY — Brillo de borde en las tarjetas
+   --------------------------------------------------------------------------
+   Adaptado de React Bits <BorderGlow /> (David Haz, MIT + Commons Clause),
+   sin React: js/border-glow.js agrega la clase .border-glow y el
+   <span class="edge-light"> a cada tarjeta, y actualiza --edge-proximity y
+   --cursor-angle con el mouse.
+
+   - Tarjetas comunes: el brillo aparece al pasar el mouse, solo en
+     dispositivos con mouse (hover: hover).
+   - .border-glow--active ("Nuevo proyecto"): siempre encendido y girando
+     alrededor del borde, en desktop y mobile.
+
+   Los colores del brillo y de la malla salen de la paleta de marca; en el
+   original se calculaban en JS a partir de props, acá van fijos en CSS.
+   ========================================================================== */
+
+/* Registrar el ángulo como <angle> permite animarlo con @keyframes
+   (la tarjeta activa gira el brillo sin JS). */
+@property --cursor-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 45deg;
+}
+
+.border-glow {
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --edge-sensitivity: 30;
+  --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+  --glow-padding: 40px;
+  --cone-spread: 25;
+  --fill-opacity: 0.5;
+  /* 0 = apagado, 1 = encendido; lo prenden :hover o --active */
+  --glow-on: 0;
+
+  /* Fondo de la tarjeta, para tapar la malla de color en el interior */
+  --card-bg: var(--c-ink-800);
+
+  /* Brillo: morado de marca (#8A87C2) un poco más luminoso */
+  --glow-color: hsl(243deg 60% 78% / 100%);
+  --glow-color-60: hsl(243deg 60% 78% / 60%);
+  --glow-color-50: hsl(243deg 60% 78% / 50%);
+  --glow-color-40: hsl(243deg 60% 78% / 40%);
+  --glow-color-30: hsl(243deg 60% 78% / 30%);
+  --glow-color-20: hsl(243deg 60% 78% / 20%);
+  --glow-color-10: hsl(243deg 60% 78% / 10%);
+
+  /* Malla de color: morado de marca, violeta y morado oscuro */
+  --gradient-one: radial-gradient(at 80% 55%, #8a87c2 0px, transparent 50%);
+  --gradient-two: radial-gradient(at 69% 34%, #c084fc 0px, transparent 50%);
+  --gradient-three: radial-gradient(at 8% 6%, #5b589c 0px, transparent 50%);
+  --gradient-four: radial-gradient(at 41% 38%, #8a87c2 0px, transparent 50%);
+  --gradient-five: radial-gradient(at 86% 85%, #c084fc 0px, transparent 50%);
+  --gradient-six: radial-gradient(at 82% 18%, #5b589c 0px, transparent 50%);
+  --gradient-seven: radial-gradient(at 51% 4%, #c084fc 0px, transparent 50%);
+  --gradient-base: linear-gradient(#8a87c2 0 100%);
+
+  position: relative;
+  isolation: isolate;
+}
+
+/* Las tarjetas del proceso son de borde, sin relleno: el interior tapa la
+   malla con el negro de su sección. */
+.card-outlined.border-glow {
+  --card-bg: var(--c-black);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .border-glow:hover {
+    --glow-on: 1;
+  }
+}
+
+.border-glow--active {
+  --glow-on: 1;
+  --edge-proximity: 85;
+  animation: border-glow-spin 6s linear infinite;
+}
+
+@keyframes border-glow-spin {
+  from {
+    --cursor-angle: 0deg;
+  }
+  to {
+    --cursor-angle: 360deg;
+  }
+}
+
+.border-glow::before,
+.border-glow::after,
+.border-glow > .edge-light {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  transition: opacity 0.4s ease-out;
+}
+
+/* Borde con malla de color, recortado en un cono que sigue al cursor */
+.border-glow::before {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card-bg) 0 100%) padding-box,
+    var(--gradient-one) border-box,
+    var(--gradient-two) border-box,
+    var(--gradient-three) border-box,
+    var(--gradient-four) border-box,
+    var(--gradient-five) border-box,
+    var(--gradient-six) border-box,
+    var(--gradient-seven) border-box,
+    var(--gradient-base) border-box;
+  opacity: calc(
+    var(--glow-on) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity))
+  );
+  mask-image: conic-gradient(
+    from var(--cursor-angle) at center,
+    black calc(var(--cone-spread) * 1%),
+    transparent calc((var(--cone-spread) + 15) * 1%),
+    transparent calc((100 - var(--cone-spread) - 15) * 1%),
+    black calc((100 - var(--cone-spread)) * 1%)
+  );
+}
+
+/* Relleno de color tenue cerca del borde */
+.border-glow::after {
+  border: 1px solid transparent;
+  background:
+    var(--gradient-one) padding-box,
+    var(--gradient-two) padding-box,
+    var(--gradient-three) padding-box,
+    var(--gradient-four) padding-box,
+    var(--gradient-five) padding-box,
+    var(--gradient-six) padding-box,
+    var(--gradient-seven) padding-box,
+    var(--gradient-base) padding-box;
+  mask-image:
+    linear-gradient(to bottom, black, black),
+    radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+    radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+    conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+  mask-composite: subtract, add, add, add, add, add;
+  opacity: calc(
+    var(--glow-on) * var(--fill-opacity) * (var(--edge-proximity) - var(--color-sensitivity)) /
+      (100 - var(--color-sensitivity))
+  );
+  mix-blend-mode: soft-light;
+}
+
+/* Halo de luz exterior */
+.border-glow > .edge-light {
+  inset: calc(var(--glow-padding) * -1);
+  pointer-events: none;
+  z-index: 1;
+  mask-image: conic-gradient(
+    from var(--cursor-angle) at center,
+    black 2.5%,
+    transparent 10%,
+    transparent 90%,
+    black 97.5%
+  );
+  opacity: calc(
+    var(--glow-on) * (var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity))
+  );
+  mix-blend-mode: plus-lighter;
+}
+
+.border-glow > .edge-light::before {
+  content: '';
+  position: absolute;
+  inset: var(--glow-padding);
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px var(--glow-color),
+    inset 0 0 1px 0 var(--glow-color-60),
+    inset 0 0 3px 0 var(--glow-color-50),
+    inset 0 0 6px 0 var(--glow-color-40),
+    inset 0 0 15px 0 var(--glow-color-30),
+    inset 0 0 25px 2px var(--glow-color-20),
+    inset 0 0 50px 2px var(--glow-color-10),
+    0 0 1px 0 var(--glow-color-60),
+    0 0 3px 0 var(--glow-color-50),
+    0 0 6px 0 var(--glow-color-40),
+    0 0 15px 0 var(--glow-color-30),
+    0 0 25px 2px var(--glow-color-20),
+    0 0 50px 2px var(--glow-color-10);
+}
+
+/* El halo sobresale 40px de la tarjeta: sin esto, en mobile generaría
+   scroll horizontal. clip recorta sin crear un contenedor de scroll. */
+main {
+  overflow-x: clip;
+}
